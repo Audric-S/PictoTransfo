@@ -1,6 +1,6 @@
 <br/>
 <div align="center">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="image.png" alt="Logo" width="80" height="80">
 <h1 align="center">Picto Transfo</h1>
 
 
@@ -66,8 +66,8 @@
 
 ## Contributors
 
-[![Alexis](https://images.weserv.nl/?url=avatars.githubusercontent.com/u/92861656?v=4&h=75&w=75&fit=cover&mask=circle&maxage=7d)](https://github.com/Destroyeur6315)
-[![Audric](https://images.weserv.nl/?url=avatars.githubusercontent.com/u/92861656?v=4&h=75&w=75&fit=cover&mask=circle&maxage=7d)](https://avatars.githubusercontent.com/u/100680489?v=4)
+![Alexis](https://images.weserv.nl/?url=avatars.githubusercontent.com/u/92861778?v=4&h=75&w=75&fit=cover&mask=circle&maxage=7d)
+![Audric](https://images.weserv.nl/?url=avatars.githubusercontent.com/u/100680489?v=4&h=75&w=75&fit=cover&mask=circle&maxage=7d)
 
 ## Contacts
 
