@@ -1,6 +1,6 @@
 <br/>
 <div align="center">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="image.png" alt="Logo" width="80" height="80">
 <h1 align="center">Picto Transfo</h1>
 
 
