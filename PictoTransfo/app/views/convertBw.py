@@ -12,7 +12,7 @@ def convert_to_bw(image_path):
 
 def hello_world(request):
     if request.method == 'GET':
-        image_path = 'media/image.jpg'
+        image_path = 'media/photo.jpg'
        
         bw_img = convert_to_bw(image_path)
 
