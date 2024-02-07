@@ -4,12 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload Photo</title>
+    <script>
+        function validateForm() {
+            var fileInput = document.getElementById('photo');
+            if (fileInput.files.length === 0) {
+                alert("Veuillez sélectionner une photo.");
+                return false;
+            }
+            return true;
+        }
+    </script>
 </head>
 <body>
     <h1>Upload a Photo</h1>
-    <form action="{% url 'upload_photo' %}" method="post" enctype="multipart/form-data">
+    <img src="../media/photo.jpg">
+    <form action="{% url 'upload_photo' %}" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
         {% csrf_token %}
-        <input type="file" name="photo">
+        <input type="file" name="photo" id="photo">
         <button type="submit">Upload Photo</button>
     </form>
 </body>

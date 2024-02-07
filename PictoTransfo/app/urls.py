@@ -19,5 +19,5 @@ from .views import uploadPhoto, convertBw
 
 urlpatterns = [
     path('', uploadPhoto.upload_photo, name='upload_photo'),
-    path('convert-bw/', convertBw.hello_world, name='convert_to_bw'),
+    path('convert-bw/', convertBw.hello_world, name='convert_to_bw')
 ]
