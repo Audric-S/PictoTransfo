@@ -15,8 +15,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
-from .views import uploadPhoto
+from .views import uploadPhoto, convertBw
 
 urlpatterns = [
     path('', uploadPhoto.upload_photo, name='upload_photo'),
+    path('home/', uploadPhoto.upload_photo, name='upload_photo'),
+    path('convert-bw/', convertBw.hello_world, name='convert_to_bw')
 ]
