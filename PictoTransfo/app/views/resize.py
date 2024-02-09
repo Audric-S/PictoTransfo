@@ -8,7 +8,7 @@ def resizeImage(request):
 
         image_path = 'media/photo.jpg'
         image = Image.open(image_path)
-
+        
         image = image.convert('RGB')
 
         resized_image = image.resize((width, height))
