@@ -38,14 +38,18 @@
 
     <div class="container" style="margin-top: 5%;">
         <div class="row">
-            <div class="col-md-6" style="height: 80vh;">
-                <img src="../media/image_bw.jpg" style="height: 60%;">
-                <h4>Image Originale</h4>
-            </div>
-            <div class="col-md-6" style="height: 80vh;">
-                <img src="../media/photo.jpg" style="height: 60%;">
-                <h2>Black and White Image</h2>
-            </div>
+            {% if pathURL is not null %}
+                <div class="col-md-6" style="height: 80vh;">
+                    <img src="{{ pathURL }}" style="height: 60%;">
+                    <h4>Image Originale</h4>
+                </div>
+            {% endif %}
+            {% if pathURLBw is not null %}
+                <div class="col-md-6" style="height: 80vh;">
+                    <img src="{{ pathURLBw }}" style="height: 60%;">
+                    <h2>Black and White Image</h2>
+                </div>
+            {% endif %}
         </div>
     </div>
 </body>
