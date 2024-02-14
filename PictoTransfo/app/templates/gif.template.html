@@ -1,21 +1,11 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload Photo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script>
-        function validateForm() {
-            var fileInput = document.getElementById('photo');
-            if (fileInput.files.length === 0) {
-                alert("Veuillez sélectionner une photo.");
-                return false;
-            }
-            return true;
-        }
-    </script>
+    <title>Create GIF</title>
     <style>
         body {
             background-color: #f8f9fa; /* Couleur de fond légère */
@@ -61,7 +51,6 @@
         }
     </style>
 </head>
-
 <body>
     <header class="d-flex justify-content-center" >
         <nav class="navbar navbar-expand-lg">
@@ -90,25 +79,60 @@
             </div>
         </nav>
     </header>
-    <main class="my-4">
+    <main class="m-4">
         <div class="card">
-            <div class="card-header text-center" style="background-color: transparent; border-bottom: 1px solid rgba(0, 0, 0, 0.175);; color: black;">
-                <i class="fas fa-upload"></i> Upload a Photo
+            <div class="card-header text-center" style="background-color: transparent; border-bottom: 1px solid rgba(0, 0, 0, 0.175); color: black;">
+                <i class="fas fa-upload"></i> Create GIF
             </div>
-            <form action="{% url 'upload_photo' %}" method="post" enctype="multipart/form-data" onsubmit="return validateForm()" class="my-3 mx-2">
+            <form action="{% url 'create_gif' %}" method="post" enctype="multipart/form-data" id="create-gif-form" class="my-3 mx-2">
                 {% csrf_token %}
-                <div class="mb-3">
-                    <input type="file" name="photo" id="photo" class="form-control">
+                <div id="container">
+                    <div id="duration-container" class="mb-3">
+                        <label for="add-duration" class="form-label">Duration per Image (seconds)</label>
+                        <input type="number" id="add-duration" name="duration" class="form-control">
+                    </div>
+                    <div id="pictures-container" class="mb-3 d-flex flex-column">
+                        <label for="pictures" class="form-label">Select Pictures</label>
+                        <div id="input-file-container" class="d-flex flex-column gap-2">
+                            <input type="file" name="pictures" id="pictures" class="form-control" accept="image/*" multiple>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button type="button" id="add-photo" class="btn btn-secondary">Add Photo</button>
+                    </div>
                 </div>
-                <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn btn-primary">Upload Photo</button>
+                <div class="d-flex justify-content-center mt-3">
+                    <button type="submit" class="btn btn-primary">Create GIF</button>
                 </div>
             </form>
-
             {% if pathURL is not null %}
-                <img class="image-upload card-img-bottom" src="{{ pathURL }}" alt="Uploaded Image">
+                <video src="{{ pathURL }}"></video>
             {% endif %}
         </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var addButton = document.getElementById('add-photo');
+                var picturesContainer = document.getElementById('pictures-container');
+                var inputFileContainer = document.getElementById('input-file-container');
+                var durationContainer = document.getElementById('duration-container');
+                var container = document.getElementById('container');
+
+                addButton.addEventListener('click', function() {
+                    var newInput = document.createElement('input');
+                    newInput.type = 'file';
+                    newInput.name = 'pictures';
+                    newInput.multiple = true;
+                    newInput.accept = 'image/*';
+                    newInput.className = 'form-control';
+                    inputFileContainer.appendChild(newInput);
+                    picturesContainer.appendChild(inputFileContainer);
+                });
+
+
+                container.appendChild(picturesContainer);
+                container.appendChild(durationContainer);
+            });
+        </script>
     </main>
 
     <footer class="footer">

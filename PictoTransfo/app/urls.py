@@ -15,10 +15,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
-from .views import uploadPhoto, convertBw
+from .views import uploadPhoto, convertBw, gif
 
 urlpatterns = [
     path('', uploadPhoto.upload_photo, name='upload_photo'),
     path('home/', uploadPhoto.upload_photo, name='upload_photo'),
-    path('convert-bw/', convertBw.renderBw, name='convert_to_bw')
+    path('convert-bw/', convertBw.renderBw, name='convert_to_bw'),
+    path('create-gif/', gif.create_gif_view, name='create_gif')
 ]
