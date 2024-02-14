@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Fusion</title>
+</head>
+<body>
+    <h1>Image Fusion</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="blend_ratio">Blend Ratio (0-1):</label>
+        <input type="text" id="blend_ratio" name="blend_ratio" required><br><br>
+        
+        <label for="position_x">Position X:</label>
+        <input type="text" id="position_x" name="position_x" required><br><br>
+        
+        <label for="position_y">Position Y:</label>
+        <input type="text" id="position_y" name="position_y" required><br><br>
+        
+        <input type="submit" value="Fusionner">
+    </form>
+</body>
+</html>
