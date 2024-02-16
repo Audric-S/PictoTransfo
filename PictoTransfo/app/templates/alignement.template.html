@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <title>Grades shades Image</title>
+    <title>Alignment</title>
     <style>
         body {
             background-color: #f8f9fa; /* Couleur de fond légère */
@@ -79,40 +79,42 @@
         </div>
       </nav>
     </header>
-
-      <main class="my-4">
+    <main class="m-4">
         <div class="card">
-            <div class="card-header text-center" style="background-color: transparent; border-bottom: 1px solid rgba(0, 0, 0, 0.175);; color: black;">
-                <i class="fas fa-upload"></i> Grades shades Image
+            <div class="card-header text-center" style="background-color: transparent; border-bottom: 1px solid rgba(0, 0, 0, 0.175); color: black;">
+                <i class="fas fa-upload"></i> Alignement
             </div>
-            <form action="{% url 'convert_to_gs' %}" method="post" enctype="multipart/form-data" onsubmit="return validateForm()" class="my-3 mx-2">
+            <form action="{% url 'alignement' %}" method="post" enctype="multipart/form-data" class="my-3 mx-2">
                 {% csrf_token %}
-                <div class="mb-3">
-                    <input type="file" name="photo" id="photo" class="form-control">
+                <div id="container">
+                    <div class="mb-3">
+                        <label for="alignment-select" class="form-label">Choose Alignment:</label>
+                        <select id="alignment-select" name="alignment" class="form-select">
+                            <option value="vertical">Vertical</option>
+                            <option value="horizontal">Horizontal</option>
+                        </select>
+                    </div>
+                    <div id="pictures-container" class="mb-3 d-flex flex-column">
+                        <label for="pictures" class="form-label">Select Pictures</label>
+                        <div id="input-file-container" class="d-flex flex-column gap-2">
+                            <input type="file" name="picture1" id="picture1" class="form-control" accept="image/*">
+                            <input type="file" name="picture2" id="picture2" class="form-control" accept="image/*">
+                        </div>
+                    </div>
                 </div>
-                <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn btn-primary">Upload Photo</button>
+                <div class="d-flex justify-content-center mt-3">
+                    <button type="submit" class="btn btn-primary">Align</button>
                 </div>
             </form>
-  
-        </div>
-      </main>
-
-    <div class="container" style="margin-top: 5%;">
-        <div class="row">
             {% if pathURL is not null %}
-                <div class="col-md-6" style="height: 80vh;">
-                    <img src="{{ pathURL }}" style="height: 60%;">
-                    <h4>Image Originale</h4>
-                </div>
-            {% endif %}
-            {% if pathURLgs is not null %}
-                <div class="col-md-6" style="height: 80vh;">
-                    <img src="{{ pathURLgs }}" style="height: 60%;">
-                    <h2>Black and White Image</h2>
-                </div>
+                <img class="image-upload card-img-bottom" src="{{ pathURL }}">
             {% endif %}
         </div>
-    </div>
+    </main>
+
+
+    <footer class="footer">
+        &copy; 2024 Alexis CARREAU, Audric SABATIER
+    </footer>
 </body>
 </html>
