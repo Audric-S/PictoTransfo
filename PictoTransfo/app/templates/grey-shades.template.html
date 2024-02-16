@@ -45,14 +45,14 @@
             padding: 20px 0;
             background-color: #EEEEEE;
             color: rgba(0, 0, 0, 0.99);
-        }
-        header {
-            background-color: #EEEEEE;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
         }
     </style>
 </head>
 <body>
-    <header class=" d-flex justify-content-center" >
+    <header class=" d-flex justify-content-center">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="/home">Home</a>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -109,10 +109,13 @@
             {% if pathURLgs is not null %}
                 <div class="col-md-6" style="height: 80vh;">
                     <img src="{{ pathURLgs }}" style="height: 60%;">
-                    <h2>Black and White Image</h2>
+                    <h4>GreyShades Image</h4>
                 </div>
             {% endif %}
         </div>
     </div>
+    <footer class="footer">
+      &copy; 2024 Alexis CARREAU, Audric SABATIER
+  </footer>
 </body>
 </html>

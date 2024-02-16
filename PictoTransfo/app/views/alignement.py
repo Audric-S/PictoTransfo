@@ -16,7 +16,6 @@ def alignementView(request):
         elif alignment == 'horizontal':
             saved_file_name = alignHorizontal(img1,img2)
 
-        # Construire l'URL complète pour le fichier enregistré
         pathUrl = fs.url(saved_file_name)
 
         return render(request, 'alignement.template.html', {
@@ -35,7 +34,6 @@ def alignHorizontal(img1,img2):
     verticalPicture.paste(imgFinal2,(imgFinal1.size[0],0))
 
 
-    # Vérifier si un fichier avec le même nom existe déjà
     if fs.exists('alignement.png'):
         # Si un fichier avec le même nom existe déjà, le supprimer
         fs.delete('alignement.png')

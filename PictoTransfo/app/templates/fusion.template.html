@@ -32,22 +32,23 @@
             margin-top: 20px;
         }
         body {
-            height: 100%; /* Assure que la hauteur totale est de 100% */
+            height: 100%;
             margin: 0;
             display: flex;
-            flex-direction: column; /* Organise le contenu en colonnes */
+            flex-direction: column; 
         }
         main {
-            flex: 1; /* Permet au contenu principal d'occuper l'espace disponible */
+            flex: 1;
         }
         footer {
             text-align: center;
             padding: 20px 0;
             background-color: #EEEEEE;
             color: rgba(0, 0, 0, 0.99);
-        }
-        header {
-            background-color: #EEEEEE;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            left: 0;
         }
     </style>
 </head>
@@ -122,5 +123,8 @@
                 </div>
             {% endif %}
         </div>
+        <footer class="footer">
+            &copy; 2024 Alexis CARREAU, Audric SABATIER
+        </footer>
 </body>
 </html>
