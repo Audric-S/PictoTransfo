@@ -2,10 +2,13 @@ from django.shortcuts import render
 from PIL import Image
 import numpy as np
 
+
+
+
 def imageFusion(request):
-    if request.method == 'POST':
-        img1 = Image.open('media/photo.jpg')
-        img2 = Image.open('media/image.jpg')
+    if request.method == 'POST' and request.FILES.get('back_image') and request.FILES.get('front_image'):
+        img1 = Image.open(request.FILES['back_image'])
+        img2 = Image.open(request.FILES['front_image'])
         
         blend_ratio = float(request.POST.get('blend_ratio', 0.5))
         position_x = int(request.POST.get('position_x', 0))
@@ -33,8 +36,11 @@ def imageFusion(request):
 
         blended_img = Image.fromarray(blended_array, 'RGB')
 
-        blended_img.save('media/fusion.jpg')
-        
-        return render(request, 'fusion.template.html')
-    else:
-        return render(request, 'fusion.template.html')
+        blended_img.save('media/fusion.png')
+
+        pathURLfusion = '../media/fusion.png'
+
+        return render(request, 'fusion.template.html', {
+            'pathURLfusion': pathURLfusion
+        })
+    return render(request, 'fusion.template.html')
