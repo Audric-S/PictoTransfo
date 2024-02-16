@@ -87,7 +87,7 @@
             </div>
             <form action="{% url 'fusion'  %}" method="post" enctype="multipart/form-data" onsubmit="return validateForm()" class="my-3 mx-2">
                 {% csrf_token %}
-                <div class="mb-3">
+                <div class="d-flex flex-column gap-2 mb-3">
                     <input type="file" name="back_image" id="back_image" class="form-control">
                     <input type="file" name="front_image" id="front_image" class="form-control">
                 </div>
@@ -96,14 +96,20 @@
                 </div>
                 <h1>Image Fusion</h1>
                 {% csrf_token %}
-                <label for="blend_ratio">Blend Ratio (0-1):</label>
-                <input type="text" id="blend_ratio" name="blend_ratio" required><br><br>
-                
-                <label for="position_x">Position X:</label>
-                <input type="text" id="position_x" name="position_x" required><br><br>
-                
-                <label for="position_y">Position Y:</label>
-                <input type="text" id="position_y" name="position_y" required><br><br>
+                <div class="d-flex flex-column gap-3">
+                    <div>
+                        <label for="blend_ratio" class="form-label">Blend Ratio (0-1):</label>
+                        <input type="text" id="blend_ratio" name="blend_ratio" required class="form-control">
+                    </div>
+                    <div>
+                        <label for="position_x" class="form-label">Position X:</label>
+                        <input type="text" id="position_x" name="position_x" required class="form-control">
+                    </div>
+                    <div>
+                        <label for="position_y" class="form-label">Position Y:</label>
+                        <input type="text" id="position_y" name="position_y" required class="form-control">
+                    </div>
+                </div>
             </form>
         </div>
       </main>
