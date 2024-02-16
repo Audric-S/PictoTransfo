@@ -84,21 +84,22 @@
             <div class="card-header text-center" style="background-color: transparent; border-bottom: 1px solid rgba(0, 0, 0, 0.175); color: black;">
                 <i class="fas fa-upload"></i> Alignement
             </div>
-            <form action="{% url 'create_gif' %}" method="post" enctype="multipart/form-data" id="create-gif-form" class="my-3 mx-2">
+            <form action="{% url 'alignement' %}" method="post" enctype="multipart/form-data" class="my-3 mx-2">
                 {% csrf_token %}
                 <div id="container">
-                    <div id="duration-container" class="mb-3">
-                        <label for="add-duration" class="form-label">Duration per Image (seconds)</label>
-                        <input type="number" id="add-duration" name="duration" class="form-control">
+                    <div class="mb-3">
+                        <label for="alignment-select" class="form-label">Choose Alignment:</label>
+                        <select id="alignment-select" name="alignment" class="form-select">
+                            <option value="vertical">Vertical</option>
+                            <option value="horizontal">Horizontal</option>
+                        </select>
                     </div>
                     <div id="pictures-container" class="mb-3 d-flex flex-column">
                         <label for="pictures" class="form-label">Select Pictures</label>
                         <div id="input-file-container" class="d-flex flex-column gap-2">
-                            <input type="file" name="pictures" id="pictures" class="form-control" accept="image/*" multiple>
+                            <input type="file" name="picture1" id="picture1" class="form-control" accept="image/*">
+                            <input type="file" name="picture2" id="picture2" class="form-control" accept="image/*">
                         </div>
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        <button type="button" id="add-photo" class="btn btn-secondary">Add Photo</button>
                     </div>
                 </div>
                 <div class="d-flex justify-content-center mt-3">
@@ -106,34 +107,11 @@
                 </div>
             </form>
             {% if pathURL is not null %}
-                <video src="{{ pathURL }}"></video>
+                <img class="image-upload card-img-bottom" src="{{ pathURL }}">
             {% endif %}
         </div>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                var addButton = document.getElementById('add-photo');
-                var picturesContainer = document.getElementById('pictures-container');
-                var inputFileContainer = document.getElementById('input-file-container');
-                var durationContainer = document.getElementById('duration-container');
-                var container = document.getElementById('container');
-
-                addButton.addEventListener('click', function() {
-                    var newInput = document.createElement('input');
-                    newInput.type = 'file';
-                    newInput.name = 'pictures';
-                    newInput.multiple = true;
-                    newInput.accept = 'image/*';
-                    newInput.className = 'form-control';
-                    inputFileContainer.appendChild(newInput);
-                    picturesContainer.appendChild(inputFileContainer);
-                });
-
-
-                container.appendChild(picturesContainer);
-                container.appendChild(durationContainer);
-            });
-        </script>
     </main>
+
 
     <footer class="footer">
         &copy; 2024 Alexis CARREAU, Audric SABATIER
