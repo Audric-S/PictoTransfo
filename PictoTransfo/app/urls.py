@@ -4,7 +4,6 @@ from .views import uploadPhoto, convertBw, resize, fusion, gif
 urlpatterns = [
     path('', uploadPhoto.upload_photo, name='upload_photo'),
     path('home/', uploadPhoto.upload_photo, name='upload_photo'),
-    path('convert-bw/', convertBw.hello_world, name='convert_to_bw'),
     path('resize/', resize.resizeImage, name='resize'),
     path('fusion/', fusion.imageFusion, name='fusion'),
     path('convert-bw/', convertBw.renderBw, name='convert_to_bw'),
