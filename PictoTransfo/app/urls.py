@@ -1,8 +1,8 @@
 from django.urls import path
-from .views import convertBw, resize, fusion, gif, grey_shades, shared
+from .views import convertBw, resize, fusion, gif, grey_shades, shared, home
 
 urlpatterns = [
-    path('', shared.uploadPhoto.upload_photo, name='upload_photo'),
+    path('', home.home, name='home'),
     path('resize/', resize.resizeImage, name='resize'),
     path('fusion/', fusion.imageFusion, name='fusion'),
     path('convert-bw/', convertBw.renderBw, name='convert_to_bw'),
